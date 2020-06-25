@@ -1,0 +1,114 @@
+<!--templates/ticket_class_2.html-->
+<!doctype html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/css/bootstrap.min.css" integrity="sha384-MCw98/SFnGE8fJT3GXwEOngsV7Zt27NXFoaoApmYm81iuXoPkFOJwJ8ERdknLPMO" crossorigin="anonymous">
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/mdbootstrap/4.18.0/css/mdb.min.css" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js" integrity="sha384-ChfqqxuZUCnJSK3+MXmPNIyE6ZbWh2IMqE241rYiqJxyMiZ6OW/JmZQ5stwEULTy" crossorigin="anonymous"></script>
+
+
+
+    <title>장고 - 차트 ticket_class_3</title>
+</head>
+<body>
+<div class="container">
+    <nav class="navbar navbar-dark indigo navbar-expand-md bg-faded justify-content-center">
+        <a href="/" class="navbar-brand d-flex w-50 mr-auto">장고 앱 모음</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsingNavbar3">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="navbar-collapse collapse w-100" id="collapsingNavbar3">
+            <ul class="navbar-nav w-100 justify-content-center">
+
+            </ul>
+            <ul class="nav navbar-nav ml-auto w-100 justify-content-end">
+
+                    <li class="nav-item">
+                        <a href="/accounts/login/" class="nav-link">로그인</a>
+                    </li>
+                    <li class="nav-item">
+                        <a href="/accounts/register/" class="nav-link">회원 가입</a>
+                    </li>
+
+            </ul>
+        </div>
+    </nav>
+    <div class="row">
+        <div class="col">
+
+    <div id="container" style="margin-top: 20px;"></div>
+    </br>
+    <script src="https://code.highcharts.com/highcharts.src.js"></script>
+
+    <script>
+        Highcharts.chart('container',{chart: {type: "spline", "borderColor":
+                    "#9DB0AC", "borderWidth": 3},
+
+            title: {
+                text: '좌석 등급에 따른 타이타닉 생존/비 생존 인원 및 생존율'
+            },
+            xAxis : {
+                categories: ["1등석","2등석", "3등석"]},
+
+            yAxis: [{"labels": {"format": "{value} %", "style": {"color": "blue"}},
+            "title": {"text": "생존율", "style": {"color": "blue"}}},
+            {"labels": {"format": "{value} 명", "style": {"color": "black"}},
+                "title": {"text": "인원", "style": {"color": "black"}},
+                "opposite": "true"}],
+
+
+             tooltip: {"shared": "true"},
+
+            legend: {"layout": "vertical", "align":
+            "left", "x": 120, "verticalAlign": "top", "y":
+            100, "floating": "true"},
+
+            series: [{
+                name: '생존',
+                type: 'column',
+                yAxis : 1,
+                data: {{survived_series}},
+                color: 'green',
+                tooltip: {valueSuffix: " 명"}
+            }, {
+                name: '비 생존',
+                type : 'column',
+                yAxis:1,
+                data: {{not_survived_series }},
+                color: 'red',
+                tooltip: {valueSuffix: " 명"}
+            }, {
+                name: '생존율',
+                type: 'spline',
+                data: {{rate_series}},
+                tooltip: {"valueSuffix": " %"}
+            }
+        ]
+        });
+    </script>
+
+ </div>
+    </div>
+    <p></p>
+
+    <footer class="page-footer font-small indigo">
+      <div class="footer-copyright text-center py-3">© 2020 Copyright:
+        <a href="http://shw0619.pythonanywhere.com/"> shw0619.pythonanywhere.com</a>
+      </div>
+    </footer>
+
+</div>
+<script>
+
+</script>
+</body>
+</html>
+
+</body>
+</html>
